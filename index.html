@@ -1,78 +1,105 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>همراز | آخرین آدرس فعال</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>همراز | آخرین آدرس فعال</title>
+<style>
     body {
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      direction: rtl;
-      font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background: #f2f2f2;
+        direction: rtl;
     }
 
     .wrapper {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
     }
 
     .wrapper img {
-      width: 180px;
-      height: auto;
-      margin-bottom: 25px;
+        max-width: 180px;
+        height: auto;
+        margin-bottom: 25px;
     }
 
-    .wrapper h1 {
-      font-size: 22px;
-      margin-bottom: 25px;
-      color: #333;
+    h1 {
+        font-size: 22px;
+        margin-bottom: 20px;
+        color: #333;
     }
 
     .btn {
-      background: #0078ff;
-      padding: 12px 28px;
-      color: white;
-      text-decoration: none;
-      border-radius: 12px;
-      font-size: 18px;
+        display: inline-block;
+        padding: 12px 28px;
+        background: #0078ff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 12px;
+        font-size: 18px;
+        margin-bottom: 20px;
     }
 
     .btn:hover {
-      opacity: 0.85;
+        opacity: 0.85;
     }
 
     .footer {
-      position: absolute;
-      bottom: 12px;
-      width: 100%;
-      text-align: center;
-      font-size: 14px;
-      color: #666;
+        position: absolute;
+        bottom: 12px;
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+        color: #666;
     }
-  </style>
+
+    .domains {
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #555;
+    }
+</style>
 </head>
 <body>
 
-  <div class="wrapper">
-
-    <!-- اینجا لینک لوگوی اصلی سایتت را قرار بده -->
+<div class="wrapper">
+    <!-- لوگوی همراز -->
     <img src="https://1hamraz.com/wp-content/uploads/2025/08/100.jpg" alt="لوگو همراز">
 
     <h1>آخرین آدرس فعال سایت همراز</h1>
 
-    <a href="https://1hamraz.com" class="btn" target="_blank">ورود به سایت</a>
+    <div class="domains">
+        دامنه اصلی: <a href="https://1hamraz.com" target="_blank">1hamraz.com</a><br>
+        دامنه جایگزین: <a href="https://2hamraz.com" target="_blank">2hamraz.com</a>
+    </div>
 
-  </div>
+    <a href="https://1hamraz.com" class="btn" id="mainBtn">ورود به سایت</a>
+</div>
 
-  <div class="footer">
-    این صفحه همیشه در دسترس است — وضعیت همراز
-  </div>
+<div class="footer">
+    این صفحه همیشه در دسترس است — <a href="https://mahdiije.github.io/hamraz-status/" target="_blank">GitHub Pages</a>
+</div>
+
+<script>
+    // بررسی وضعیت دامنه اصلی و تغییر خودکار دکمه
+    // توجه: این روش ساده است و فقط برای اطلاع‌رسانی عمل می‌کند، بررسی واقعی فیلتر شدن نیاز به سرور دارد.
+    const mainDomain = "https://1hamraz.com";
+    const backupDomain = "https://2hamraz.com";
+    const btn = document.getElementById("mainBtn");
+
+    fetch(mainDomain, { method: 'HEAD', mode: 'no-cors' })
+        .then(() => {
+            btn.href = mainDomain; // دامنه اصلی در دسترس است
+        })
+        .catch(() => {
+            btn.href = backupDomain; // دامنه اصلی فیلتر شده، دکمه به دامنه جایگزین می‌رود
+        });
+</script>
 
 </body>
 </html>
